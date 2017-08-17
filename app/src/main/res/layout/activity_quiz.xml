@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Modified with Chapter 1-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,24 +8,45 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.johnstonr.spc.android.geoquiz.QuizActivity">
-
+    <!--Added with Chapter 1-->
+    <!--Removed Text String, Added ID with Chapter 2-->
     <TextView
+        android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/question_text"/>
+        android:padding="24dp" />
+    <!--Added with Chapter 1-->
     <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+        <!--Added with Chapter 1-->
         <Button
             android:id="@+id/button_true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_true"/>
+        <!--Added with Chapter 1-->
         <Button
             android:id="@+id/button_false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_false"/>
+    </LinearLayout>
+    <!--Added with Chapter 2-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/button_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left" />
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right" />
     </LinearLayout>
 </LinearLayout>
