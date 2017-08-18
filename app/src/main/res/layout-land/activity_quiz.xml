@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Modified with Chapter 1-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!--Modified with Chapter 3-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context="com.johnstonr.spc.android.geoquiz.QuizActivity">
     <!--Added with Chapter 1-->
     <!--Removed Text String, Added ID with Chapter 2-->
@@ -14,11 +11,13 @@
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:padding="24dp" />
     <!--Added with Chapter 1-->
     <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal"
     android:orientation="horizontal">
         <!--Added with Chapter 1-->
         <Button
@@ -34,10 +33,6 @@
             android:text="@string/button_false"/>
     </LinearLayout>
     <!--Added with Chapter 2-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
         <Button
             android:id="@+id/button_prev"
             android:layout_width="wrap_content"
@@ -52,5 +47,4 @@
             android:layout_gravity="bottom|right"
             android:text="@string/button_next"
             android:drawableRight="@drawable/arrow_right" />
-    </LinearLayout>
-</LinearLayout>
+</FrameLayout>

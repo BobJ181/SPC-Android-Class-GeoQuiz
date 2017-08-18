@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
+    private static final String TAG = "QuizActivity";
+    private static final String KEY_INDEX = "index";
+
     private Button mButtonFalse;
     private Button mButtonTrue;
     private Button mButtonNext;
@@ -32,6 +35,10 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        Log.d("QuizActivity", "onCreate() called");
+
+        if (savedInstanceState != null) { mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0); }
 
         mButtonTrue = (Button) findViewById(R.id.button_true);
         mButtonFalse = (Button) findViewById(R.id.button_false);
@@ -77,14 +84,52 @@ public class QuizActivity extends AppCompatActivity {
         updateQuestion();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+    }
     private void updateQuestion() {
-        int question = mQuestionBank[mCurrentIndex].getTextResId();
-        mQuestionTextView.setText(question);
+        try {
+            Log.d(TAG, "Updating Question Text", new Exception());
+            int question = mQuestionBank[mCurrentIndex].getTextResId();
+            mQuestionTextView.setText(question);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            Log.e(TAG, "Index was out of Bounds", e);
+        }
     }
 
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
+        Log.i(TAG, "Check Answer Called from " + (userPressedTrue ? "True " : "False ") + "Button");
         int messageResId = 0;
 
         if (userPressedTrue){
@@ -98,9 +143,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void next(){
-        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length; Log.i(TAG, "Next Button Pressed");
     }
     private void last() {
-        mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+        mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length; Log.i(TAG, "Last Button Pressed");
     }
 }
